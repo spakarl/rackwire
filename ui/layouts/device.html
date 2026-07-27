@@ -43,6 +43,7 @@
   <h2>Ports hinzufügen</h2>
   <form method="post" action="/devices/{{.Device.ID}}/ports" class="form-grid">
     <label>Anzahl <input type="number" name="count" value="1" min="1" max="48"></label>
+    <label>Port-Präfix <input name="portPrefix" value="{{.PortPrefix}}" placeholder="z.B. A-"></label>
     <label>Template
       <select name="templateId">
         {{range .Templates}}

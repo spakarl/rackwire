@@ -99,6 +99,7 @@ type pageData struct {
 	Error         string
 	IsSeed        bool
 	DefaultID     string
+	PortPrefix    string
 }
 
 func (s *Server) withColors(d pageData) pageData {
@@ -163,15 +164,9 @@ func (s *Server) createDevice(w http.ResponseWriter, r *http.Request) {
 	if count > 48 {
 		count = 48
 	}
-	prefix := strings.ToUpper(kind[:1]) + "-"
-	if kind == "patchpanel" {
-		prefix = "P-"
-	}
-	if kind == "outlet" {
-		prefix = "O-"
-	}
-	if kind == "router" {
-		prefix = "R-"
+	prefix := strings.TrimSpace(r.FormValue("portPrefix"))
+	if prefix == "" {
+		prefix = defaultPortPrefix(kind)
 	}
 
 	err := s.store.Update(func(rack *model.Rack) error {
@@ -202,11 +197,12 @@ func (s *Server) device(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.render(w, "device.html", pageData{
-		Title:     dev.Name,
-		Rack:      &rack,
-		Device:    dev,
-		Templates: s.cat.List(),
-		DefaultID: porttpl.DefaultID,
+		Title:      dev.Name,
+		Rack:       &rack,
+		Device:     dev,
+		Templates:  s.cat.List(),
+		DefaultID:  porttpl.DefaultID,
+		PortPrefix: inferPortPrefix(dev.Ports),
 	})
 }
 
@@ -502,7 +498,10 @@ func (s *Server) addPorts(w http.ResponseWriter, r *http.Request) {
 			return fmt.Errorf("device not found")
 		}
 		start := len(dev.Ports) + 1
-		prefix := "P-"
+		prefix := strings.TrimSpace(r.FormValue("portPrefix"))
+		if prefix == "" {
+			prefix = inferPortPrefix(dev.Ports)
+		}
 		added := s.cat.NewPorts(count, tpl, prefix, newID)
 		for i := range added {
 			added[i].Label = prefix + fmt.Sprintf("%02d", start+i)
@@ -706,6 +705,38 @@ func newID() string {
 	var b [8]byte
 	_, _ = rand.Read(b[:])
 	return "id_" + hex.EncodeToString(b[:])
+}
+
+func defaultPortPrefix(kind string) string {
+	switch kind {
+	case "patchpanel":
+		return "P-"
+	case "outlet":
+		return "O-"
+	case "router":
+		return "R-"
+	default:
+		if kind == "" {
+			return "X-"
+		}
+		return strings.ToUpper(kind[:1]) + "-"
+	}
+}
+
+// inferPortPrefix strips trailing digits from the first port label (e.g. "LAN-03" → "LAN-").
+func inferPortPrefix(ports []model.Port) string {
+	if len(ports) == 0 {
+		return "P-"
+	}
+	label := ports[0].Label
+	i := len(label)
+	for i > 0 && label[i-1] >= '0' && label[i-1] <= '9' {
+		i--
+	}
+	if i == 0 {
+		return "P-"
+	}
+	return label[:i]
 }
 
 func kindLabel(kind string) string {
