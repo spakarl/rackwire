@@ -1,4 +1,39 @@
 (function () {
+  const FOLD_KEY = "rackwire.home.folds";
+
+  function persistFolds() {
+    const state = {};
+    document.querySelectorAll("details.fold[data-fold]").forEach((el) => {
+      state[el.getAttribute("data-fold")] = el.open;
+    });
+    try {
+      localStorage.setItem(FOLD_KEY, JSON.stringify(state));
+    } catch (_) {}
+  }
+
+  function restoreFolds() {
+    let state = null;
+    try {
+      state = JSON.parse(localStorage.getItem(FOLD_KEY) || "null");
+    } catch (_) {}
+    if (!state || typeof state !== "object") return;
+    document.querySelectorAll("details.fold[data-fold]").forEach((el) => {
+      const id = el.getAttribute("data-fold");
+      if (Object.prototype.hasOwnProperty.call(state, id)) {
+        el.open = !!state[id];
+      }
+    });
+  }
+
+  restoreFolds();
+  document.querySelectorAll("details.fold[data-fold]").forEach((el) => {
+    el.addEventListener("toggle", persistFolds);
+  });
+  // Keep open panels across POST redirects (e.g. new link).
+  document.querySelectorAll("details.fold[data-fold] form").forEach((form) => {
+    form.addEventListener("submit", persistFolds);
+  });
+
   function applyColorSwatch(select) {
     const row = select.closest("tr");
     if (!row) return;

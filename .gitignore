@@ -3,3 +3,4 @@ bin/
 data/rack.json.tmp
 .DS_Store
 .env
+backups/

@@ -3,7 +3,7 @@ TAG     ?= latest
 PORT    ?= 3040
 COMPOSE ?= docker compose
 
-.PHONY: help build run up down restart logs push publish login clean tidy
+.PHONY: help build run up down restart logs push publish login clean tidy backup
 
 help: ## Show targets
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | \
@@ -29,6 +29,11 @@ restart: down up ## Restart
 
 logs: ## Follow logs
 	$(COMPOSE) logs -f
+
+backup: ## Zip ./data into backups/rackwire-YYYYMMDD-HHMMSS.zip
+	@mkdir -p backups
+	@f="backups/rackwire-$$(date +%Y%m%d-%H%M%S).zip"; \
+		zip -r "$$f" data && echo "wrote $$f"
 
 login: ## Login to GHCR
 	@if [ -n "$$GH_TOKEN" ]; then \

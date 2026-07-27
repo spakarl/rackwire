@@ -6,28 +6,31 @@
   <p class="lede">Patchpanels, Router und Dosen inkl. Pinbelegung und Aderfarben.</p>
 </section>
 
-{{$groups := .Rack.DevicesGroupedByRoom}}
-{{if $groups}}
-{{range $groups}}
-<section class="room-section">
-  <h2 class="room-heading">{{.Name}}</h2>
-  <div class="grid devices">
-    {{range .Devices}}
-    <a class="device-card" href="/devices/{{.ID}}" style="--dev: {{.Color}}">
-      <span class="kind">{{kindLabel .Kind}}</span>
-      <strong>{{.Name}}</strong>
-      <span class="meta">{{len .Ports}} Ports{{if .Position}} · U{{.Position}}{{end}}{{if .RoomID}} · {{$.Rack.RoomName .RoomID}}{{end}}</span>
-    </a>
-    {{end}}
-  </div>
-</section>
-{{end}}
-{{else}}
-<p class="muted">Noch keine Geräte.</p>
-{{end}}
+<details class="panel fold" data-fold="devices" open>
+  <summary>Geräte</summary>
+  {{$groups := .Rack.DevicesGroupedByRoom}}
+  {{if $groups}}
+  {{range $groups}}
+  <section class="room-section">
+    <h2 class="room-heading">{{.Name}}</h2>
+    <div class="grid devices">
+      {{range .Devices}}
+      <a class="device-card" href="/devices/{{.ID}}" style="--dev: {{.Color}}">
+        <span class="kind">{{kindLabel .Kind}}</span>
+        <strong>{{.Name}}</strong>
+        <span class="meta">{{len .Ports}} Ports{{if .Position}} · U{{.Position}}{{end}}{{if .RoomID}} · {{$.Rack.RoomName .RoomID}}{{end}}</span>
+      </a>
+      {{end}}
+    </div>
+  </section>
+  {{end}}
+  {{else}}
+  <p class="muted">Noch keine Geräte.</p>
+  {{end}}
+</details>
 
-<section class="panel">
-  <h2>Gerät hinzufügen</h2>
+<details class="panel fold" data-fold="add-device">
+  <summary>Gerät hinzufügen</summary>
   <form method="post" action="/devices" class="form-grid">
     <label>Name <input name="name" required placeholder="z.B. Patchpanel D"></label>
     <label>Typ
@@ -59,10 +62,10 @@
     <label>Farbe <input type="color" name="color" value="#2980b9"></label>
     <button type="submit">Anlegen</button>
   </form>
-</section>
+</details>
 
-<section class="panel">
-  <h2>Verbindungen</h2>
+<details class="panel fold" data-fold="links">
+  <summary>Verbindungen</summary>
   {{if .Rack.Links}}
   <ul class="links">
     {{range .Rack.Links}}
@@ -108,9 +111,21 @@
     </label>
     <button type="submit">Verbinden</button>
   </form>
-</section>
+</details>
 
 <script type="application/json" id="port-map">{{.PortMapJSON}}</script>
+<script>
+(function () {
+  try {
+    var state = JSON.parse(localStorage.getItem("rackwire.home.folds") || "null");
+    if (!state) return;
+    document.querySelectorAll("details.fold[data-fold]").forEach(function (el) {
+      var id = el.getAttribute("data-fold");
+      if (Object.prototype.hasOwnProperty.call(state, id)) el.open = !!state[id];
+    });
+  } catch (e) {}
+})();
+</script>
 
 {{template "bottom" .}}
 {{end}}
