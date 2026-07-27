@@ -1,0 +1,14 @@
+{{define "port.html"}}
+{{template "top" .}}
+
+<p class="crumb"><a href="/">Rack</a> / <a href="/devices/{{.Device.ID}}">{{.Device.Name}}</a> / {{.Port.Label}}</p>
+
+<section class="hero">
+  <h1>{{.Port.Label}}</h1>
+  {{if .Peer}}<p class="peer-line">Verbunden mit <strong>{{.Peer}}</strong></p>{{end}}
+</section>
+
+{{template "port_editor.html" .}}
+
+{{template "bottom" .}}
+{{end}}

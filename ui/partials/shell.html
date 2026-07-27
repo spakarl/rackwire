@@ -1,0 +1,23 @@
+{{define "top"}}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}} · rackwire</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/htmx.min.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">rackwire</a>
+    <span class="muted">Pin- &amp; Rack-Dokumentation</span>
+  </header>
+  <main>
+{{end}}
+
+{{define "bottom"}}
+  </main>
+</body>
+</html>
+{{end}}

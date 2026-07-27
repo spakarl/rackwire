@@ -1,0 +1,105 @@
+{{define "home.html"}}
+{{template "top" .}}
+
+<section class="hero">
+  <h1>{{.Rack.Name}}</h1>
+  <p class="lede">Patchpanels, Router und Dosen inkl. Pinbelegung und Aderfarben.</p>
+</section>
+
+<section class="grid devices">
+  {{range .Rack.Devices}}
+  <a class="device-card" href="/devices/{{.ID}}" style="--dev: {{.Color}}">
+    <span class="kind">{{kindLabel .Kind}}</span>
+    <strong>{{.Name}}</strong>
+    <span class="meta">{{len .Ports}} Ports</span>
+  </a>
+  {{else}}
+  <p class="muted">Noch keine Geräte.</p>
+  {{end}}
+</section>
+
+<section class="panel">
+  <h2>Gerät hinzufügen</h2>
+  <form method="post" action="/devices" class="form-grid">
+    <label>Name <input name="name" required placeholder="z.B. Patchpanel D"></label>
+    <label>Typ
+      <select name="kind">
+        <option value="patchpanel">Patchpanel</option>
+        <option value="router">Router</option>
+        <option value="outlet">Dose</option>
+        <option value="other">Sonstiges</option>
+      </select>
+    </label>
+    <label>Port-Template
+      <select name="templateId">
+        {{range $.Templates}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
+      </select>
+    </label>
+    <label>Anzahl Ports <input type="number" name="portCount" value="24" min="1" max="48"></label>
+    <label>Farbe <input type="color" name="color" value="#2980b9"></label>
+    <button type="submit">Anlegen</button>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Verbindungen</h2>
+  {{if .Rack.Links}}
+  <ul class="links">
+    {{range .Rack.Links}}
+    <li>
+      <span>{{$.Rack.EndpointLabel .A.DeviceID .A.PortID}} ← → {{$.Rack.EndpointLabel .B.DeviceID .B.PortID}}</span>
+      <form method="post" action="/links/{{.ID}}/delete" class="inline">
+        <button type="submit" class="danger ghost">Löschen</button>
+      </form>
+    </li>
+    {{end}}
+  </ul>
+  {{else}}
+  <p class="muted">Noch keine Patchverbindungen.</p>
+  {{end}}
+
+  <h3>Neue Verbindung</h3>
+  <form method="post" action="/links" class="form-grid link-form">
+    <label>Von Gerät
+      <select name="aDeviceId" id="aDeviceId" required>
+        <option value="">—</option>
+        {{range .Rack.Devices}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
+      </select>
+    </label>
+    <label>Von Port
+      <select name="aPortId" id="aPortId" required>
+        <option value="">Gerät wählen…</option>
+      </select>
+    </label>
+    <label>Nach Gerät
+      <select name="bDeviceId" id="bDeviceId" required>
+        <option value="">—</option>
+        {{range .Rack.Devices}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
+      </select>
+    </label>
+    <label>Nach Port
+      <select name="bPortId" id="bPortId" required>
+        <option value="">Gerät wählen…</option>
+      </select>
+    </label>
+    <button type="submit">Verbinden</button>
+  </form>
+</section>
+
+<script type="application/json" id="port-map">
+{
+{{range $i, $d := .Rack.Devices}}{{if $i}},{{end}}
+"{{$d.ID}}": [{{range $j, $p := $d.Ports}}{{if $j}},{{end}}{"id":"{{$p.ID}}","label":{{printf "%q" $p.Label}}}{{end}}]
+{{end}}
+}
+</script>
+<script src="/static/app.js"></script>
+
+{{template "bottom" .}}
+{{end}}

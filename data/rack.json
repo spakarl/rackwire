@@ -1,0 +1,4492 @@
+{
+  "name": "Homelab Rack",
+  "devices": [
+    {
+      "id": "id_0001",
+      "name": "Patchpanel A",
+      "kind": "patchpanel",
+      "color": "#2980b9",
+      "ports": [
+        {
+          "id": "id_0002",
+          "label": "A-01",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0003",
+          "label": "A-02",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0004",
+          "label": "A-03",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0005",
+          "label": "A-04",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0006",
+          "label": "A-05",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0007",
+          "label": "A-06",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0008",
+          "label": "A-07",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0009",
+          "label": "A-08",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0010",
+          "label": "A-09",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0011",
+          "label": "A-10",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0012",
+          "label": "A-11",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0013",
+          "label": "A-12",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0014",
+          "label": "A-13",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0015",
+          "label": "A-14",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0016",
+          "label": "A-15",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0017",
+          "label": "A-16",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0018",
+          "label": "A-17",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0019",
+          "label": "A-18",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0020",
+          "label": "A-19",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0021",
+          "label": "A-20",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0022",
+          "label": "A-21",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0023",
+          "label": "A-22",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0024",
+          "label": "A-23",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0025",
+          "label": "A-24",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "id_0026",
+      "name": "Patchpanel B",
+      "kind": "patchpanel",
+      "color": "#16a085",
+      "ports": [
+        {
+          "id": "id_0027",
+          "label": "B-01",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0028",
+          "label": "B-02",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0029",
+          "label": "B-03",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0030",
+          "label": "B-04",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0031",
+          "label": "B-05",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0032",
+          "label": "B-06",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0033",
+          "label": "B-07",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0034",
+          "label": "B-08",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0035",
+          "label": "B-09",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0036",
+          "label": "B-10",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0037",
+          "label": "B-11",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0038",
+          "label": "B-12",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0039",
+          "label": "B-13",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0040",
+          "label": "B-14",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0041",
+          "label": "B-15",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0042",
+          "label": "B-16",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0043",
+          "label": "B-17",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0044",
+          "label": "B-18",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0045",
+          "label": "B-19",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0046",
+          "label": "B-20",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0047",
+          "label": "B-21",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0048",
+          "label": "B-22",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0049",
+          "label": "B-23",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0050",
+          "label": "B-24",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "id_0051",
+      "name": "Patchpanel C",
+      "kind": "patchpanel",
+      "color": "#8e44ad",
+      "ports": [
+        {
+          "id": "id_0052",
+          "label": "C-01",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0053",
+          "label": "C-02",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0054",
+          "label": "C-03",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0055",
+          "label": "C-04",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0056",
+          "label": "C-05",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0057",
+          "label": "C-06",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0058",
+          "label": "C-07",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0059",
+          "label": "C-08",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0060",
+          "label": "C-09",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0061",
+          "label": "C-10",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0062",
+          "label": "C-11",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0063",
+          "label": "C-12",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0064",
+          "label": "C-13",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0065",
+          "label": "C-14",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0066",
+          "label": "C-15",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0067",
+          "label": "C-16",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0068",
+          "label": "C-17",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0069",
+          "label": "C-18",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0070",
+          "label": "C-19",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0071",
+          "label": "C-20",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0072",
+          "label": "C-21",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0073",
+          "label": "C-22",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0074",
+          "label": "C-23",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0075",
+          "label": "C-24",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "id_0076",
+      "name": "Router",
+      "kind": "router",
+      "color": "#c0392b",
+      "ports": [
+        {
+          "id": "id_0077",
+          "label": "LAN-01",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0078",
+          "label": "LAN-02",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0079",
+          "label": "LAN-03",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0080",
+          "label": "LAN-04",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0081",
+          "label": "LAN-05",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0082",
+          "label": "LAN-06",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0083",
+          "label": "LAN-07",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        },
+        {
+          "id": "id_0084",
+          "label": "LAN-08",
+          "templateId": "rj45-t568b",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "TX+",
+              "color": "WH/OR",
+              "colorHex": "#f5f0e6"
+            },
+            {
+              "number": 2,
+              "signal": "TX-",
+              "color": "OR",
+              "colorHex": "#e67e22"
+            },
+            {
+              "number": 3,
+              "signal": "RX+",
+              "color": "WH/GN",
+              "colorHex": "#eafaf1"
+            },
+            {
+              "number": 4,
+              "signal": "",
+              "color": "BU",
+              "colorHex": "#3498db"
+            },
+            {
+              "number": 5,
+              "signal": "",
+              "color": "WH/BU",
+              "colorHex": "#ebf5fb"
+            },
+            {
+              "number": 6,
+              "signal": "RX-",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 7,
+              "signal": "",
+              "color": "WH/BN",
+              "colorHex": "#f5e6d3"
+            },
+            {
+              "number": 8,
+              "signal": "",
+              "color": "BN",
+              "colorHex": "#8b4513"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "id_0085",
+      "name": "Dose Eingang (Klingel)",
+      "kind": "outlet",
+      "color": "#d35400",
+      "ports": [
+        {
+          "id": "id_0086",
+          "label": "KLG-01",
+          "templateId": "doorbell-2pin",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "Bell+",
+              "color": "RD",
+              "colorHex": "#c0392b"
+            },
+            {
+              "number": 2,
+              "signal": "Bell-",
+              "color": "BK",
+              "colorHex": "#2c3e50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "id_0087",
+      "name": "Dose Analog Telefon",
+      "kind": "outlet",
+      "color": "#27ae60",
+      "ports": [
+        {
+          "id": "id_0088",
+          "label": "TEL-01",
+          "templateId": "analog-phone-2",
+          "pins": [
+            {
+              "number": 1,
+              "signal": "Tip",
+              "color": "GN",
+              "colorHex": "#27ae60"
+            },
+            {
+              "number": 2,
+              "signal": "Ring",
+              "color": "RD",
+              "colorHex": "#c0392b"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": []
+}

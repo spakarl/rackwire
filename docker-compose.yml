@@ -1,0 +1,13 @@
+services:
+  rackwire:
+    image: ghcr.io/spakarl/rackwire:latest
+    build: .
+    container_name: rackwire
+    ports:
+      - "${RACKWIRE_PORT:-3040}:3040"
+    volumes:
+      - rackwire-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  rackwire-data:

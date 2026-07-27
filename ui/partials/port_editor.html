@@ -1,0 +1,49 @@
+{{define "port_editor.html"}}
+<section class="panel" id="port-editor">
+  {{if .Flash}}<p class="flash">{{.Flash}}</p>{{end}}
+  <form method="post"
+        action="/devices/{{.Device.ID}}/ports/{{.Port.ID}}"
+        hx-post="/devices/{{.Device.ID}}/ports/{{.Port.ID}}"
+        hx-target="#port-editor"
+        hx-swap="outerHTML"
+        class="stack">
+    <div class="form-grid">
+      <label>Label <input name="label" value="{{.Port.Label}}" required></label>
+      <label>Template
+        <select name="templateId">
+          {{range .Templates}}
+          <option value="{{.ID}}" {{if eq .ID $.Port.TemplateID}}selected{{end}}>{{.Name}}</option>
+          {{end}}
+        </select>
+      </label>
+    </div>
+    <p class="hint">Template wechseln setzt die Pins auf die Standardbelegung zurück. Einzelne Pins kannst du danach überschreiben.</p>
+
+    <h2>Pins</h2>
+    {{if .Port.Pins}}
+    <table class="pins">
+      <thead>
+        <tr><th>#</th><th>Farbe</th><th>Ader</th><th>Signal</th></tr>
+      </thead>
+      <tbody>
+        {{range .Port.Pins}}
+        <tr>
+          <td class="num">{{.Number}}</td>
+          <td><span class="swatch" style="background: {{.ColorHex}}" title="{{.ColorHex}}"></span></td>
+          <td>
+            <input name="pin_{{.Number}}_color" value="{{.Color}}" aria-label="Aderfarbe Pin {{.Number}}">
+            <input type="color" name="pin_{{.Number}}_hex" value="{{if .ColorHex}}{{.ColorHex}}{{else}}#888888{{end}}" aria-label="Farbcode Pin {{.Number}}">
+          </td>
+          <td><input name="pin_{{.Number}}_signal" value="{{.Signal}}" aria-label="Signal Pin {{.Number}}"></td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+    {{else}}
+    <p class="muted">Keine Pins (Blank-Template).</p>
+    {{end}}
+
+    <button type="submit">Speichern</button>
+  </form>
+</section>
+{{end}}

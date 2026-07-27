@@ -1,0 +1,48 @@
+{{define "device.html"}}
+{{template "top" .}}
+
+<p class="crumb"><a href="/">Rack</a> / {{.Device.Name}}</p>
+
+<section class="hero row">
+  <div>
+    <p class="kind" style="color: {{.Device.Color}}">{{kindLabel .Device.Kind}}</p>
+    <h1>{{.Device.Name}}</h1>
+    <p class="muted">{{len .Device.Ports}} Ports</p>
+  </div>
+  <form method="post" action="/devices/{{.Device.ID}}/delete" onsubmit="return confirm('Gerät wirklich löschen?')">
+    <button type="submit" class="danger">Gerät löschen</button>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Ports</h2>
+  <div class="port-grid">
+    {{range .Device.Ports}}
+    <a class="port-chip" href="/devices/{{$.Device.ID}}/ports/{{.ID}}" style="--dev: {{$.Device.Color}}">
+      <strong>{{.Label}}</strong>
+      <span class="meta">{{.TemplateID}} · {{len .Pins}} Pins</span>
+      {{with $.Rack.PeerLabel $.Device.ID .ID}}
+      <span class="peer">→ {{.}}</span>
+      {{end}}
+    </a>
+    {{end}}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Ports hinzufügen</h2>
+  <form method="post" action="/devices/{{.Device.ID}}/ports" class="form-grid">
+    <label>Anzahl <input type="number" name="count" value="1" min="1" max="48"></label>
+    <label>Template
+      <select name="templateId">
+        {{range .Templates}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
+      </select>
+    </label>
+    <button type="submit">Hinzufügen</button>
+  </form>
+</section>
+
+{{template "bottom" .}}
+{{end}}

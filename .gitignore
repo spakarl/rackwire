@@ -1,0 +1,5 @@
+bin/
+*.tmp
+data/rack.json.tmp
+.DS_Store
+.env
