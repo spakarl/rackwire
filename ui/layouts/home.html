@@ -6,17 +6,25 @@
   <p class="lede">Patchpanels, Router und Dosen inkl. Pinbelegung und Aderfarben.</p>
 </section>
 
-<section class="grid devices">
-  {{range .Rack.DevicesSorted}}
-  <a class="device-card" href="/devices/{{.ID}}" style="--dev: {{.Color}}">
-    <span class="kind">{{kindLabel .Kind}}</span>
-    <strong>{{.Name}}</strong>
-    <span class="meta">{{len .Ports}} Ports{{if .Position}} · U{{.Position}}{{end}}</span>
-  </a>
-  {{else}}
-  <p class="muted">Noch keine Geräte.</p>
-  {{end}}
+{{$groups := .Rack.DevicesGroupedByRoom}}
+{{if $groups}}
+{{range $groups}}
+<section class="room-section">
+  <h2 class="room-heading">{{.Name}}</h2>
+  <div class="grid devices">
+    {{range .Devices}}
+    <a class="device-card" href="/devices/{{.ID}}" style="--dev: {{.Color}}">
+      <span class="kind">{{kindLabel .Kind}}</span>
+      <strong>{{.Name}}</strong>
+      <span class="meta">{{len .Ports}} Ports{{if .Position}} · U{{.Position}}{{end}}{{if .RoomID}} · {{$.Rack.RoomName .RoomID}}{{end}}</span>
+    </a>
+    {{end}}
+  </div>
 </section>
+{{end}}
+{{else}}
+<p class="muted">Noch keine Geräte.</p>
+{{end}}
 
 <section class="panel">
   <h2>Gerät hinzufügen</h2>
@@ -28,6 +36,14 @@
         <option value="router">Router</option>
         <option value="outlet">Dose</option>
         <option value="other">Sonstiges</option>
+      </select>
+    </label>
+    <label>Raum
+      <select name="roomId">
+        <option value="">—</option>
+        {{range $.Rack.RoomsSorted}}
+        <option value="{{.ID}}">{{.Name}}</option>
+        {{end}}
       </select>
     </label>
     <label>Port-Template

@@ -28,3 +28,36 @@ func TestSortDevicesByPositionThenName(t *testing.T) {
 		t.Fatal("SortDevices mutated input")
 	}
 }
+
+func TestDevicesGroupedByRoom(t *testing.T) {
+	rack := model.Rack{
+		Rooms: []model.Room{
+			{ID: "keller", Name: "Keller"},
+			{ID: "wohnzimmer", Name: "Wohnzimmer"},
+		},
+		Devices: []model.Device{
+			{ID: "1", Name: "Panel", RoomID: "wohnzimmer", Position: 2},
+			{ID: "2", Name: "Dose", RoomID: "wohnzimmer", Position: 1},
+			{ID: "3", Name: "Rack", RoomID: "keller"},
+			{ID: "4", Name: "Orphan", RoomID: ""},
+			{ID: "5", Name: "Ghost", RoomID: "missing"},
+		},
+	}
+	groups := rack.DevicesGroupedByRoom()
+	if len(groups) != 3 {
+		t.Fatalf("groups=%d %#v", len(groups), groups)
+	}
+	if groups[0].Name != "Keller" || len(groups[0].Devices) != 1 {
+		t.Fatalf("first: %#v", groups[0])
+	}
+	if groups[1].Name != "Wohnzimmer" || groups[1].Devices[0].Name != "Dose" {
+		t.Fatalf("second: %#v", groups[1])
+	}
+	if groups[2].Name != "Ohne Raum" || len(groups[2].Devices) != 2 {
+		t.Fatalf("orphan: %#v", groups[2])
+	}
+	rack.ClearRoomID("wohnzimmer")
+	if rack.DeviceByID("1").RoomID != "" || rack.DeviceByID("2").RoomID != "" {
+		t.Fatal("ClearRoomID failed")
+	}
+}

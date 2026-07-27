@@ -73,6 +73,10 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("POST /templates/{id}", s.templateSave)
 	mux.HandleFunc("POST /templates/{id}/delete", s.templateDelete)
 	mux.HandleFunc("GET /colors", s.colorsPage)
+	mux.HandleFunc("GET /rooms", s.roomsList)
+	mux.HandleFunc("POST /rooms", s.roomsCreate)
+	mux.HandleFunc("POST /rooms/{id}", s.roomsUpdate)
+	mux.HandleFunc("POST /rooms/{id}/delete", s.roomsDelete)
 	return mux
 }
 
@@ -168,14 +172,19 @@ func (s *Server) createDevice(w http.ResponseWriter, r *http.Request) {
 	if prefix == "" {
 		prefix = defaultPortPrefix(kind)
 	}
+	roomID := strings.TrimSpace(r.FormValue("roomId"))
 
 	err := s.store.Update(func(rack *model.Rack) error {
+		if roomID != "" && rack.RoomByID(roomID) == nil {
+			return fmt.Errorf("room not found")
+		}
 		dev := model.Device{
 			ID:       newID(),
 			Name:     name,
 			Kind:     kind,
 			Color:    color,
 			Position: position,
+			RoomID:   roomID,
 			Ports:    s.cat.NewPorts(count, tpl, prefix, newID),
 		}
 		rack.Devices = append(rack.Devices, dev)
@@ -215,6 +224,7 @@ func (s *Server) updateDevice(w http.ResponseWriter, r *http.Request) {
 	name := strings.TrimSpace(r.FormValue("name"))
 	color := r.FormValue("color")
 	position, _ := strconv.Atoi(r.FormValue("position"))
+	roomID := strings.TrimSpace(r.FormValue("roomId"))
 	if name == "" {
 		http.Error(w, "name required", 400)
 		return
@@ -230,9 +240,13 @@ func (s *Server) updateDevice(w http.ResponseWriter, r *http.Request) {
 		if dev == nil {
 			return fmt.Errorf("device not found")
 		}
+		if roomID != "" && rack.RoomByID(roomID) == nil {
+			return fmt.Errorf("room not found")
+		}
 		dev.Name = name
 		dev.Color = color
 		dev.Position = position
+		dev.RoomID = roomID
 		return nil
 	})
 	if err != nil {
@@ -699,6 +713,92 @@ func (s *Server) colorsPage(w http.ResponseWriter, r *http.Request) {
 		Title:         "Aderfarben",
 		ColorPalettes: s.colors.ListPalettes(),
 	})
+}
+
+func (s *Server) roomsList(w http.ResponseWriter, r *http.Request) {
+	rack := s.store.Get()
+	s.render(w, "rooms.html", pageData{
+		Title: "Räume",
+		Rack:  &rack,
+	})
+}
+
+func (s *Server) roomsCreate(w http.ResponseWriter, r *http.Request) {
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	name := strings.TrimSpace(r.FormValue("name"))
+	if name == "" {
+		http.Error(w, "name required", 400)
+		return
+	}
+	id := porttpl.Slug(name)
+	if id == "" {
+		http.Error(w, "invalid name", 400)
+		return
+	}
+	err := s.store.Update(func(rack *model.Rack) error {
+		if rack.RoomByID(id) != nil {
+			id = id + "-" + newID()[3:7]
+		}
+		rack.Rooms = append(rack.Rooms, model.Room{ID: id, Name: name})
+		return nil
+	})
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	http.Redirect(w, r, "/rooms", http.StatusSeeOther)
+}
+
+func (s *Server) roomsUpdate(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	name := strings.TrimSpace(r.FormValue("name"))
+	if name == "" {
+		http.Error(w, "name required", 400)
+		return
+	}
+	err := s.store.Update(func(rack *model.Rack) error {
+		rm := rack.RoomByID(id)
+		if rm == nil {
+			return fmt.Errorf("room not found")
+		}
+		rm.Name = name
+		return nil
+	})
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	http.Redirect(w, r, "/rooms", http.StatusSeeOther)
+}
+
+func (s *Server) roomsDelete(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	err := s.store.Update(func(rack *model.Rack) error {
+		if rack.RoomByID(id) == nil {
+			return fmt.Errorf("room not found")
+		}
+		out := rack.Rooms[:0]
+		for _, rm := range rack.Rooms {
+			if rm.ID != id {
+				out = append(out, rm)
+			}
+		}
+		rack.Rooms = out
+		rack.ClearRoomID(id)
+		return nil
+	})
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	http.Redirect(w, r, "/rooms", http.StatusSeeOther)
 }
 
 func newID() string {

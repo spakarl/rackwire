@@ -1,0 +1,48 @@
+{{define "rooms.html"}}
+{{template "top" .}}
+
+<section class="hero">
+  <h1>Räume</h1>
+  <p class="lede">Orte für Geräte (Wohnzimmer, Keller, …). Zuordnung am Gerät beim Anlegen oder Bearbeiten.</p>
+</section>
+
+<section class="panel">
+  <h2>Vorhanden</h2>
+  {{if .Rack.RoomsSorted}}
+  <table class="pins">
+    <thead><tr><th>Name</th><th>ID</th><th>Geräte</th><th></th></tr></thead>
+    <tbody>
+      {{range .Rack.RoomsSorted}}
+      <tr>
+        <td>
+          <form method="post" action="/rooms/{{.ID}}" class="inline-edit">
+            <input name="name" value="{{.Name}}" required>
+            <button type="submit">Speichern</button>
+          </form>
+        </td>
+        <td><code>{{.ID}}</code></td>
+        <td>{{$.Rack.DeviceCountInRoom .ID}}</td>
+        <td>
+          <form method="post" action="/rooms/{{.ID}}/delete" onsubmit="return confirm('Raum löschen? Geräte werden ohne Raum belassen.')">
+            <button type="submit" class="danger ghost">Löschen</button>
+          </form>
+        </td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+  {{else}}
+  <p class="muted">Noch keine Räume.</p>
+  {{end}}
+</section>
+
+<section class="panel">
+  <h2>Raum anlegen</h2>
+  <form method="post" action="/rooms" class="form-grid">
+    <label>Name <input name="name" required placeholder="z.B. Wohnzimmer"></label>
+    <button type="submit">Anlegen</button>
+  </form>
+</section>
+
+{{template "bottom" .}}
+{{end}}

@@ -76,6 +76,20 @@ main { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
   gap: 0.85rem;
   margin-bottom: 2rem;
 }
+.room-section { margin-bottom: 1.75rem; }
+.room-heading {
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.inline-edit {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.inline-edit input { min-width: 10rem; flex: 1; }
 .device-card {
   display: flex;
   flex-direction: column;
