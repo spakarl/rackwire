@@ -1,0 +1,8 @@
+{{define "wire_swatch"}}
+{{/* expects . as wirecolor.Resolved */}}
+{{if .Solid}}
+<span class="swatch swatch-solid" style="background: {{.Hex}}" title="{{.ID}} {{.Label}}"></span>
+{{else}}
+<span class="swatch swatch-stripe" style="--base: {{.BaseHex}}; --stripe: {{.StripeHex}}" title="{{.ID}} {{.Label}}"></span>
+{{end}}
+{{end}}

@@ -1,0 +1,18 @@
+{
+  "id": "doorbell-2pin",
+  "name": "Klingel (2 Pins)",
+  "pins": [
+    {
+      "number": 1,
+      "signal": "Bell+",
+      "color": "RD",
+      "colorHex": "#c0392b"
+    },
+    {
+      "number": 2,
+      "signal": "Bell-",
+      "color": "BK",
+      "colorHex": "#2c3e50"
+    }
+  ]
+}

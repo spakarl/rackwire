@@ -7,10 +7,20 @@
   <div>
     <p class="kind" style="color: {{.Device.Color}}">{{kindLabel .Device.Kind}}</p>
     <h1>{{.Device.Name}}</h1>
-    <p class="muted">{{len .Device.Ports}} Ports</p>
+    <p class="muted">{{len .Device.Ports}} Ports{{if .Device.Position}} · Position U{{.Device.Position}}{{end}}</p>
   </div>
   <form method="post" action="/devices/{{.Device.ID}}/delete" onsubmit="return confirm('Gerät wirklich löschen?')">
     <button type="submit" class="danger">Gerät löschen</button>
+  </form>
+</section>
+
+<section class="panel">
+  <h2>Gerät bearbeiten</h2>
+  <form method="post" action="/devices/{{.Device.ID}}" class="form-grid">
+    <label>Name <input name="name" value="{{.Device.Name}}" required></label>
+    <label>Position (U) <input type="number" name="position" value="{{.Device.Position}}" min="0" max="99" title="Rack-Einheit / Sortierindex"></label>
+    <label>Farbe <input type="color" name="color" value="{{.Device.Color}}"></label>
+    <button type="submit">Speichern</button>
   </form>
 </section>
 
@@ -36,7 +46,7 @@
     <label>Template
       <select name="templateId">
         {{range .Templates}}
-        <option value="{{.ID}}">{{.Name}}</option>
+        <option value="{{.ID}}" {{if eq .ID $.DefaultID}}selected{{end}}>{{.Name}}</option>
         {{end}}
       </select>
     </label>

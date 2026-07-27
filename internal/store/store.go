@@ -14,11 +14,12 @@ import (
 type Store struct {
 	mu   sync.Mutex
 	path string
+	cat  *porttpl.Catalog
 	rack model.Rack
 }
 
-func New(path string) (*Store, error) {
-	s := &Store{path: path}
+func New(path string, cat *porttpl.Catalog) (*Store, error) {
+	s := &Store{path: path, cat: cat}
 	if err := s.loadOrSeed(); err != nil {
 		return nil, err
 	}
@@ -34,7 +35,7 @@ func (s *Store) loadOrSeed() error {
 		if !os.IsNotExist(err) {
 			return err
 		}
-		s.rack = seedRack()
+		s.rack = seedRack(s.cat)
 		return s.saveLocked()
 	}
 	if err := json.Unmarshal(data, &s.rack); err != nil {
@@ -80,39 +81,64 @@ func cloneRack(r model.Rack) model.Rack {
 	return out
 }
 
-func seedRack() model.Rack {
+func seedRack(cat *porttpl.Catalog) model.Rack {
 	id := sequentialID()
-	ppTpl := "rj45-t568b"
+	ppTpl := porttpl.DefaultID
 
 	pp1 := model.Device{
 		ID: id(), Name: "Patchpanel A", Kind: "patchpanel", Color: "#2980b9",
-		Ports: porttpl.NewPorts(24, ppTpl, "A-", id),
+		Ports: cat.NewPorts(24, ppTpl, "A-", id),
 	}
 	pp2 := model.Device{
 		ID: id(), Name: "Patchpanel B", Kind: "patchpanel", Color: "#16a085",
-		Ports: porttpl.NewPorts(24, ppTpl, "B-", id),
+		Ports: cat.NewPorts(24, ppTpl, "B-", id),
 	}
 	pp3 := model.Device{
 		ID: id(), Name: "Patchpanel C", Kind: "patchpanel", Color: "#8e44ad",
-		Ports: porttpl.NewPorts(24, ppTpl, "C-", id),
+		Ports: cat.NewPorts(24, ppTpl, "C-", id),
 	}
 	router := model.Device{
 		ID: id(), Name: "Router", Kind: "router", Color: "#c0392b",
-		Ports: porttpl.NewPorts(8, ppTpl, "LAN-", id),
+		Ports: cat.NewPorts(8, ppTpl, "LAN-", id),
 	}
 	doorbell := model.Device{
 		ID: id(), Name: "Dose Eingang (Klingel)", Kind: "outlet", Color: "#d35400",
-		Ports: porttpl.NewPorts(1, "doorbell-2pin", "KLG-", id),
+		Ports: cat.NewPorts(1, "doorbell-2pin", "KLG-", id),
 	}
 	phone := model.Device{
 		ID: id(), Name: "Dose Analog Telefon", Kind: "outlet", Color: "#27ae60",
-		Ports: porttpl.NewPorts(1, "analog-phone-2", "TEL-", id),
+		Ports: cat.NewPorts(1, "analog-phone-2", "TEL-", id),
+	}
+	isdn := model.Device{
+		ID: id(), Name: "Dose ISDN", Kind: "outlet", Color: "#7f8c8d",
+		Ports: cat.NewPorts(1, "isdn-4pin", "ISDN-", id),
 	}
 
 	return model.Rack{
 		Name:    "Homelab Rack",
-		Devices: []model.Device{pp1, pp2, pp3, router, doorbell, phone},
-		Links:   []model.Link{},
+		Devices: []model.Device{pp1, pp2, pp3, router, doorbell, phone, isdn},
+		Links: []model.Link{
+			{
+				ID: id(),
+				A:  model.Endpoint{DeviceID: pp1.ID, PortID: pp1.Ports[0].ID},
+				B:  model.Endpoint{DeviceID: router.ID, PortID: router.Ports[0].ID},
+			},
+			{
+				ID: id(),
+				A:  model.Endpoint{DeviceID: pp1.ID, PortID: pp1.Ports[1].ID},
+				B:  model.Endpoint{DeviceID: doorbell.ID, PortID: doorbell.Ports[0].ID},
+			},
+			{
+				ID: id(),
+				A:  model.Endpoint{DeviceID: pp2.ID, PortID: pp2.Ports[0].ID},
+				B:  model.Endpoint{DeviceID: phone.ID, PortID: phone.Ports[0].ID},
+			},
+			{
+				ID: id(),
+				A:  model.Endpoint{DeviceID: pp3.ID, PortID: pp3.Ports[0].ID},
+				B:  model.Endpoint{DeviceID: isdn.ID, PortID: isdn.Ports[0].ID},
+			},
+		},
 	}
 }
 

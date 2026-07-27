@@ -7,11 +7,11 @@
 </section>
 
 <section class="grid devices">
-  {{range .Rack.Devices}}
+  {{range .Rack.DevicesSorted}}
   <a class="device-card" href="/devices/{{.ID}}" style="--dev: {{.Color}}">
     <span class="kind">{{kindLabel .Kind}}</span>
     <strong>{{.Name}}</strong>
-    <span class="meta">{{len .Ports}} Ports</span>
+    <span class="meta">{{len .Ports}} Ports{{if .Position}} · U{{.Position}}{{end}}</span>
   </a>
   {{else}}
   <p class="muted">Noch keine Geräte.</p>
@@ -33,11 +33,12 @@
     <label>Port-Template
       <select name="templateId">
         {{range $.Templates}}
-        <option value="{{.ID}}">{{.Name}}</option>
+        <option value="{{.ID}}" {{if eq .ID $.DefaultID}}selected{{end}}>{{.Name}}</option>
         {{end}}
       </select>
     </label>
     <label>Anzahl Ports <input type="number" name="portCount" value="24" min="1" max="48"></label>
+    <label>Position (U) <input type="number" name="position" value="0" min="0" max="99" title="Rack-Einheit / Sortierindex"></label>
     <label>Farbe <input type="color" name="color" value="#2980b9"></label>
     <button type="submit">Anlegen</button>
   </form>
@@ -65,7 +66,7 @@
     <label>Von Gerät
       <select name="aDeviceId" id="aDeviceId" required>
         <option value="">—</option>
-        {{range .Rack.Devices}}
+        {{range .Rack.DevicesSorted}}
         <option value="{{.ID}}">{{.Name}}</option>
         {{end}}
       </select>
@@ -78,7 +79,7 @@
     <label>Nach Gerät
       <select name="bDeviceId" id="bDeviceId" required>
         <option value="">—</option>
-        {{range .Rack.Devices}}
+        {{range .Rack.DevicesSorted}}
         <option value="{{.ID}}">{{.Name}}</option>
         {{end}}
       </select>
@@ -94,7 +95,7 @@
 
 <script type="application/json" id="port-map">
 {
-{{range $i, $d := .Rack.Devices}}{{if $i}},{{end}}
+{{range $i, $d := .Rack.DevicesSorted}}{{if $i}},{{end}}
 "{{$d.ID}}": [{{range $j, $p := $d.Ports}}{{if $j}},{{end}}{"id":"{{$p.ID}}","label":{{printf "%q" $p.Label}}}{{end}}]
 {{end}}
 }

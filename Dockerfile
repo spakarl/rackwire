@@ -10,8 +10,12 @@ RUN apk add --no-cache ca-certificates
 WORKDIR /app
 COPY --from=build /out/rackwire /app/rackwire
 COPY data/rack.json /app/data/rack.json
+COPY data/templates /app/data/templates
+COPY data/colors /app/data/colors
 ENV ADDR=:3040
 ENV DATA_PATH=/app/data/rack.json
+ENV TEMPLATES_DIR=/app/data/templates
+ENV COLORS_DIR=/app/data/colors
 EXPOSE 3040
 VOLUME ["/app/data"]
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \

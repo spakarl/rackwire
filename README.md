@@ -25,10 +25,10 @@ make run
 ## Features (MVP)
 
 - Geräte: Patchpanel, Router, Dose
-- Builtin-Templates: RJ45 T568A/B, 2-Pin Klingel, Analog-Telefon, Blank
-- Pro Port: Label, Template, Pin-Overrides (Signal + Farbe)
-- Patchverbindungen zwischen Ports
-- Seed-Daten: 3 Patchpanels, Router, Klingel- und Telefon-Dose
+- **JSON-Templates** unter `data/templates/` (T568A Standard, T568B, ISDN-4, Klingel, Telefon)
+- Pro Port: Label, Template, editierbare Pinnummern/Farben; „Als Template speichern“
+- Patchverbindungen + Verbindungskarte (`/map`)
+- Seed-Daten: 3 Patchpanels, Router, Spezialdosen
 
 ## Image
 

@@ -1,0 +1,29 @@
+{{define "colors.html"}}
+{{template "top" .}}
+
+<section class="hero">
+  <h1>Aderfarben</h1>
+  <p class="lede">Farbsammlungen unter <code>data/colors/*.json</code>. Wechselfarbige Adern (WH/OR) nutzen <code>base</code> und <code>stripe</code>.</p>
+</section>
+
+{{range .ColorPalettes}}
+<section class="panel">
+  <h2>{{.Name}}</h2>
+  <p class="muted"><code>{{.ID}}.json</code></p>
+  <div class="color-grid">
+    {{range .Colors}}
+    {{$sw := wireSwatch .ID}}
+    <div class="color-card">
+      {{template "wire_swatch" $sw}}
+      <strong>{{.ID}}</strong>
+      <span class="muted">{{.Label}}</span>
+    </div>
+    {{end}}
+  </div>
+</section>
+{{else}}
+<p class="muted">Keine Farbsammlungen geladen.</p>
+{{end}}
+
+{{template "bottom" .}}
+{{end}}

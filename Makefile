@@ -16,7 +16,7 @@ build: ## Build local binary
 	go build -o bin/rackwire ./cmd/rackwire
 
 run: build ## Run locally on :$(PORT)
-	ADDR=:$(PORT) DATA_PATH=data/rack.json ./bin/rackwire
+	ADDR=:$(PORT) DATA_PATH=data/rack.json TEMPLATES_DIR=data/templates COLORS_DIR=data/colors ./bin/rackwire
 
 up: ## Build and start via Compose
 	RACKWIRE_PORT=$(PORT) $(COMPOSE) up -d --build

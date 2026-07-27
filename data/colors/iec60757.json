@@ -1,0 +1,22 @@
+{
+  "id": "iec60757",
+  "name": "Netzwerk / IEC 60757",
+  "colors": [
+    { "id": "WH", "label": "White", "hex": "#f5f5f5" },
+    { "id": "BN", "label": "Brown", "hex": "#8b4513" },
+    { "id": "GN", "label": "Green", "hex": "#27ae60" },
+    { "id": "YE", "label": "Yellow", "hex": "#f1c40f" },
+    { "id": "GY", "label": "Grey", "hex": "#95a5a6" },
+    { "id": "PK", "label": "Pink", "hex": "#e91e8c" },
+    { "id": "BU", "label": "Blue", "hex": "#3498db" },
+    { "id": "RD", "label": "Red", "hex": "#c0392b" },
+    { "id": "BK", "label": "Black", "hex": "#2c3e50" },
+    { "id": "VT", "label": "Violet", "hex": "#8e44ad" },
+    { "id": "OR", "label": "Orange", "hex": "#e67e22" },
+    { "id": "TQ", "label": "Turquoise", "hex": "#1abc9c" },
+    { "id": "WH/OR", "label": "White/Orange", "base": "WH", "stripe": "OR" },
+    { "id": "WH/GN", "label": "White/Green", "base": "WH", "stripe": "GN" },
+    { "id": "WH/BU", "label": "White/Blue", "base": "WH", "stripe": "BU" },
+    { "id": "WH/BN", "label": "White/Brown", "base": "WH", "stripe": "BN" }
+  ]
+}

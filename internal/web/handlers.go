@@ -11,21 +11,29 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/spakarl/rackwire/internal/maplayout"
 	"github.com/spakarl/rackwire/internal/model"
 	"github.com/spakarl/rackwire/internal/porttpl"
 	"github.com/spakarl/rackwire/internal/store"
+	"github.com/spakarl/rackwire/internal/wirecolor"
 )
 
 type Server struct {
-	store *store.Store
-	tmpl  *template.Template
+	store  *store.Store
+	cat    *porttpl.Catalog
+	colors *wirecolor.Catalog
+	tmpl   *template.Template
 	static fs.FS
 }
 
-func New(st *store.Store, uiFS fs.FS) (*Server, error) {
+func New(st *store.Store, cat *porttpl.Catalog, colors *wirecolor.Catalog, uiFS fs.FS) (*Server, error) {
+	s := &Server{store: st, cat: cat, colors: colors}
 	tmpl, err := template.New("").Funcs(template.FuncMap{
-		"kindLabel": kindLabel,
-		"lower":     strings.ToLower,
+		"kindLabel":  kindLabel,
+		"lower":      strings.ToLower,
+		"add":        func(a, b int) int { return a + b },
+		"wireSwatch": func(code string) wirecolor.Resolved { return colors.Resolve(code) },
+		"colorKnown": func(code string) bool { return colors.Known(code) },
 	}).ParseFS(uiFS, "layouts/*.html", "partials/*.html")
 	if err != nil {
 		return nil, err
@@ -34,23 +42,36 @@ func New(st *store.Store, uiFS fs.FS) (*Server, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Server{store: st, tmpl: tmpl, static: static}, nil
+	s.tmpl = tmpl
+	s.static = static
+	return s, nil
 }
 
 func (s *Server) Handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServerFS(s.static)))
 	mux.HandleFunc("GET /{$}", s.home)
+	mux.HandleFunc("GET /map", s.mapPage)
 	mux.HandleFunc("GET /health", s.health)
+	mux.HandleFunc("GET /api/health", s.health)
+
 	mux.HandleFunc("POST /devices", s.createDevice)
 	mux.HandleFunc("GET /devices/{id}", s.device)
+	mux.HandleFunc("POST /devices/{id}", s.updateDevice)
 	mux.HandleFunc("POST /devices/{id}/delete", s.deleteDevice)
 	mux.HandleFunc("GET /devices/{id}/ports/{portId}", s.port)
 	mux.HandleFunc("POST /devices/{id}/ports/{portId}", s.updatePort)
 	mux.HandleFunc("POST /devices/{id}/ports", s.addPorts)
+
 	mux.HandleFunc("POST /links", s.createLink)
 	mux.HandleFunc("POST /links/{id}/delete", s.deleteLink)
-	mux.HandleFunc("GET /api/health", s.health)
+
+	mux.HandleFunc("GET /templates", s.templatesList)
+	mux.HandleFunc("POST /templates", s.templatesCreate)
+	mux.HandleFunc("GET /templates/{id}", s.templateEdit)
+	mux.HandleFunc("POST /templates/{id}", s.templateSave)
+	mux.HandleFunc("POST /templates/{id}/delete", s.templateDelete)
+	mux.HandleFunc("GET /colors", s.colorsPage)
 	return mux
 }
 
@@ -60,14 +81,29 @@ func (s *Server) health(w http.ResponseWriter, _ *http.Request) {
 }
 
 type pageData struct {
-	Title     string
-	Rack      *model.Rack
-	Device    *model.Device
-	Port      *model.Port
-	Templates []model.PortTemplate
-	Peer      string
-	Flash     string
-	Error     string
+	Title        string
+	Rack         *model.Rack
+	Device       *model.Device
+	Port         *model.Port
+	Templates    []model.PortTemplate
+	Template     *model.PortTemplate
+	Map          maplayout.Diagram
+	ColorGroups  []struct {
+		Name    string
+		Options []wirecolor.SelectOption
+	}
+	ColorPalettes []wirecolor.Palette
+	Peer          string
+	Flash         string
+	Error         string
+	IsSeed        bool
+	DefaultID     string
+}
+
+func (s *Server) withColors(d pageData) pageData {
+	d.ColorGroups = s.colors.GroupedOptions()
+	d.ColorPalettes = s.colors.ListPalettes()
+	return d
 }
 
 func (s *Server) render(w http.ResponseWriter, name string, data any) {
@@ -79,7 +115,18 @@ func (s *Server) render(w http.ResponseWriter, name string, data any) {
 
 func (s *Server) home(w http.ResponseWriter, r *http.Request) {
 	rack := s.store.Get()
-	s.render(w, "home.html", pageData{Title: rack.Name, Rack: &rack, Templates: porttpl.Builtin()})
+	s.render(w, "home.html", pageData{
+		Title: rack.Name, Rack: &rack, Templates: s.cat.List(), DefaultID: porttpl.DefaultID,
+	})
+}
+
+func (s *Server) mapPage(w http.ResponseWriter, r *http.Request) {
+	rack := s.store.Get()
+	s.render(w, "map.html", pageData{
+		Title: "Verbindungskarte",
+		Rack:  &rack,
+		Map:   maplayout.Build(&rack),
+	})
 }
 
 func (s *Server) createDevice(w http.ResponseWriter, r *http.Request) {
@@ -92,6 +139,10 @@ func (s *Server) createDevice(w http.ResponseWriter, r *http.Request) {
 	color := r.FormValue("color")
 	tpl := r.FormValue("templateId")
 	count, _ := strconv.Atoi(r.FormValue("portCount"))
+	position, _ := strconv.Atoi(r.FormValue("position"))
+	if position < 0 {
+		position = 0
+	}
 	if name == "" {
 		http.Error(w, "name required", 400)
 		return
@@ -103,7 +154,7 @@ func (s *Server) createDevice(w http.ResponseWriter, r *http.Request) {
 		color = "#555555"
 	}
 	if tpl == "" {
-		tpl = "rj45-t568b"
+		tpl = porttpl.DefaultID
 	}
 	if count < 1 {
 		count = 1
@@ -124,11 +175,12 @@ func (s *Server) createDevice(w http.ResponseWriter, r *http.Request) {
 
 	err := s.store.Update(func(rack *model.Rack) error {
 		dev := model.Device{
-			ID:    newID(),
-			Name:  name,
-			Kind:  kind,
-			Color: color,
-			Ports: porttpl.NewPorts(count, tpl, prefix, newID),
+			ID:       newID(),
+			Name:     name,
+			Kind:     kind,
+			Color:    color,
+			Position: position,
+			Ports:    s.cat.NewPorts(count, tpl, prefix, newID),
 		}
 		rack.Devices = append(rack.Devices, dev)
 		return nil
@@ -152,8 +204,45 @@ func (s *Server) device(w http.ResponseWriter, r *http.Request) {
 		Title:     dev.Name,
 		Rack:      &rack,
 		Device:    dev,
-		Templates: porttpl.Builtin(),
+		Templates: s.cat.List(),
+		DefaultID: porttpl.DefaultID,
 	})
+}
+
+func (s *Server) updateDevice(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	name := strings.TrimSpace(r.FormValue("name"))
+	color := r.FormValue("color")
+	position, _ := strconv.Atoi(r.FormValue("position"))
+	if name == "" {
+		http.Error(w, "name required", 400)
+		return
+	}
+	if color == "" {
+		color = "#555555"
+	}
+	if position < 0 {
+		position = 0
+	}
+	err := s.store.Update(func(rack *model.Rack) error {
+		dev := rack.DeviceByID(id)
+		if dev == nil {
+			return fmt.Errorf("device not found")
+		}
+		dev.Name = name
+		dev.Color = color
+		dev.Position = position
+		return nil
+	})
+	if err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	http.Redirect(w, r, "/devices/"+id, http.StatusSeeOther)
 }
 
 func (s *Server) deleteDevice(w http.ResponseWriter, r *http.Request) {
@@ -196,14 +285,14 @@ func (s *Server) port(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	s.render(w, "port.html", pageData{
+	s.render(w, "port.html", s.withColors(pageData{
 		Title:     port.Label,
 		Rack:      &rack,
 		Device:    dev,
 		Port:      port,
-		Templates: porttpl.Builtin(),
+		Templates: s.cat.List(),
 		Peer:      rack.PeerLabel(devID, portID),
-	})
+	}))
 }
 
 func (s *Server) updatePort(w http.ResponseWriter, r *http.Request) {
@@ -213,7 +302,12 @@ func (s *Server) updatePort(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 400)
 		return
 	}
+	intent := r.FormValue("intent")
+	if intent == "" {
+		intent = "save"
+	}
 
+	var flash string
 	err := s.store.Update(func(rack *model.Rack) error {
 		dev := rack.DeviceByID(devID)
 		if dev == nil {
@@ -226,22 +320,76 @@ func (s *Server) updatePort(w http.ResponseWriter, r *http.Request) {
 
 		port.Label = strings.TrimSpace(r.FormValue("label"))
 		newTpl := r.FormValue("templateId")
-		if newTpl != "" && newTpl != port.TemplateID {
-			porttpl.ApplyTemplate(port, newTpl)
+
+		if strings.HasPrefix(intent, "remove_pin_") {
+			idx, _ := strconv.Atoi(strings.TrimPrefix(intent, "remove_pin_"))
+			pins := s.parsePinsFromForm(r)
+			if idx >= 0 && idx < len(pins) {
+				pins = append(pins[:idx], pins[idx+1:]...)
+			}
+			port.Pins = pins
+			if newTpl != "" {
+				port.TemplateID = newTpl
+			}
+			flash = "Pin entfernt"
+			return nil
 		}
 
-		// Pin overrides from form: pin_N_signal, pin_N_color, pin_N_hex
-		for i := range port.Pins {
-			n := strconv.Itoa(port.Pins[i].Number)
-			if v := r.FormValue("pin_" + n + "_signal"); r.Form.Has("pin_" + n + "_signal") {
-				port.Pins[i].Signal = v
+		switch intent {
+		case "add_pin":
+			pins := s.parsePinsFromForm(r)
+			next := 1
+			for _, p := range pins {
+				if p.Number >= next {
+					next = p.Number + 1
+				}
 			}
-			if v := r.FormValue("pin_" + n + "_color"); r.Form.Has("pin_" + n + "_color") {
-				port.Pins[i].Color = v
+			pins = append(pins, model.Pin{Number: next, ColorHex: "#888888"})
+			port.Pins = pins
+			if newTpl != "" {
+				port.TemplateID = newTpl
 			}
-			if v := r.FormValue("pin_" + n + "_hex"); r.Form.Has("pin_" + n + "_hex") {
-				port.Pins[i].ColorHex = v
+			flash = "Pin hinzugefügt"
+		case "remove_pin":
+			pins := s.parsePinsFromForm(r)
+			if len(pins) > 0 {
+				pins = pins[:len(pins)-1]
 			}
+			port.Pins = pins
+			if newTpl != "" {
+				port.TemplateID = newTpl
+			}
+			flash = "Pin entfernt"
+		case "save_template":
+			pins := s.parsePinsFromForm(r)
+			port.Pins = pins
+			if newTpl != "" {
+				port.TemplateID = newTpl
+			}
+			name := strings.TrimSpace(r.FormValue("templateName"))
+			if name == "" {
+				return fmt.Errorf("template name required")
+			}
+			t := model.PortTemplate{Name: name, Pins: pins}
+			t.ID = porttpl.Slug(name)
+			if t.ID == "" {
+				return fmt.Errorf("invalid template name")
+			}
+			if err := s.cat.Save(t); err != nil {
+				return err
+			}
+			port.TemplateID = t.ID
+			flash = "Template gespeichert"
+		default: // save
+			if newTpl != "" && newTpl != port.TemplateID {
+				s.cat.ApplyTemplate(port, newTpl)
+			} else {
+				port.Pins = s.parsePinsFromForm(r)
+				if newTpl != "" {
+					port.TemplateID = newTpl
+				}
+			}
+			flash = "Gespeichert"
 		}
 		return nil
 	})
@@ -250,19 +398,54 @@ func (s *Server) updatePort(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	rack := s.store.Get()
+	dev := rack.DeviceByID(devID)
+	port := dev.PortByID(portID)
 	if r.Header.Get("HX-Request") == "true" {
-		rack := s.store.Get()
-		dev := rack.DeviceByID(devID)
-		port := dev.PortByID(portID)
-		s.render(w, "port_editor.html", pageData{
+		s.render(w, "port_editor.html", s.withColors(pageData{
 			Rack: &rack, Device: dev, Port: port,
-			Templates: porttpl.Builtin(),
+			Templates: s.cat.List(),
 			Peer:      rack.PeerLabel(devID, portID),
-			Flash:     "Saved",
-		})
+			Flash:     flash,
+		}))
 		return
 	}
 	http.Redirect(w, r, "/devices/"+devID+"/ports/"+portID, http.StatusSeeOther)
+}
+
+func (s *Server) parsePinsFromForm(r *http.Request) []model.Pin {
+	count, _ := strconv.Atoi(r.FormValue("pinCount"))
+	if count < 0 {
+		count = 0
+	}
+	if count > 64 {
+		count = 64
+	}
+	pins := make([]model.Pin, 0, count)
+	for i := 0; i < count; i++ {
+		prefix := fmt.Sprintf("pin_%d_", i)
+		num, _ := strconv.Atoi(r.FormValue(prefix + "number"))
+		color := r.FormValue(prefix + "color")
+		hex := ""
+		if s.colors != nil {
+			res := s.colors.Resolve(color)
+			if res.Solid {
+				hex = res.Hex
+			} else {
+				hex = res.BaseHex
+			}
+		}
+		if hex == "" {
+			hex = "#888888"
+		}
+		pins = append(pins, model.Pin{
+			Number:   num,
+			Signal:   r.FormValue(prefix + "signal"),
+			Color:    color,
+			ColorHex: hex,
+		})
+	}
+	return pins
 }
 
 func (s *Server) addPorts(w http.ResponseWriter, r *http.Request) {
@@ -277,7 +460,7 @@ func (s *Server) addPorts(w http.ResponseWriter, r *http.Request) {
 		count = 1
 	}
 	if tpl == "" {
-		tpl = "rj45-t568b"
+		tpl = porttpl.DefaultID
 	}
 	err := s.store.Update(func(rack *model.Rack) error {
 		dev := rack.DeviceByID(devID)
@@ -286,7 +469,7 @@ func (s *Server) addPorts(w http.ResponseWriter, r *http.Request) {
 		}
 		start := len(dev.Ports) + 1
 		prefix := "P-"
-		added := porttpl.NewPorts(count, tpl, prefix, newID)
+		added := s.cat.NewPorts(count, tpl, prefix, newID)
 		for i := range added {
 			added[i].Label = prefix + fmt.Sprintf("%02d", start+i)
 		}
@@ -325,7 +508,6 @@ func (s *Server) createLink(w http.ResponseWriter, r *http.Request) {
 		if rack.DeviceByID(aDev).PortByID(aPort) == nil || rack.DeviceByID(bDev).PortByID(bPort) == nil {
 			return fmt.Errorf("port not found")
 		}
-		// replace existing links on either endpoint
 		links := rack.Links[:0]
 		for _, l := range rack.Links {
 			touchA := (l.A.DeviceID == aDev && l.A.PortID == aPort) || (l.B.DeviceID == aDev && l.B.PortID == aPort)
@@ -365,6 +547,125 @@ func (s *Server) deleteLink(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.Redirect(w, r, "/", http.StatusSeeOther)
+}
+
+func (s *Server) templatesList(w http.ResponseWriter, r *http.Request) {
+	s.render(w, "templates.html", pageData{
+		Title:     "Templates",
+		Templates: s.cat.List(),
+		DefaultID: porttpl.DefaultID,
+	})
+}
+
+func (s *Server) templatesCreate(w http.ResponseWriter, r *http.Request) {
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	name := strings.TrimSpace(r.FormValue("name"))
+	if name == "" {
+		http.Error(w, "name required", 400)
+		return
+	}
+	base := r.FormValue("fromId")
+	var pins []model.Pin
+	if base != "" {
+		if t := s.cat.ByID(base); t != nil {
+			pins = append([]model.Pin(nil), t.Pins...)
+		}
+	}
+	t := model.PortTemplate{Name: name, Pins: pins}
+	t.ID = porttpl.Slug(name)
+	if t.ID == "" {
+		http.Error(w, "invalid name", 400)
+		return
+	}
+	if existing := s.cat.ByID(t.ID); existing != nil {
+		t.ID = t.ID + "-" + newID()[3:7]
+	}
+	if err := s.cat.Save(t); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	http.Redirect(w, r, "/templates/"+t.ID, http.StatusSeeOther)
+}
+
+func (s *Server) templateEdit(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	t := s.cat.ByID(id)
+	if t == nil {
+		http.NotFound(w, r)
+		return
+	}
+	s.render(w, "template_edit.html", s.withColors(pageData{
+		Title:    t.Name,
+		Template: t,
+		IsSeed:   s.cat.IsSeed(id),
+	}))
+}
+
+func (s *Server) templateSave(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	existing := s.cat.ByID(id)
+	if existing == nil {
+		http.NotFound(w, r)
+		return
+	}
+	intent := r.FormValue("intent")
+	pins := s.parsePinsFromForm(r)
+	name := strings.TrimSpace(r.FormValue("name"))
+	if name == "" {
+		name = existing.Name
+	}
+
+	if strings.HasPrefix(intent, "remove_pin_") {
+		idx, _ := strconv.Atoi(strings.TrimPrefix(intent, "remove_pin_"))
+		if idx >= 0 && idx < len(pins) {
+			pins = append(pins[:idx], pins[idx+1:]...)
+		}
+	} else {
+		switch intent {
+		case "add_pin":
+			next := 1
+			for _, p := range pins {
+				if p.Number >= next {
+					next = p.Number + 1
+				}
+			}
+			pins = append(pins, model.Pin{Number: next, ColorHex: "#888888"})
+		case "remove_pin":
+			if len(pins) > 0 {
+				pins = pins[:len(pins)-1]
+			}
+		}
+	}
+
+	t := model.PortTemplate{ID: id, Name: name, Pins: pins}
+	if err := s.cat.Save(t); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	http.Redirect(w, r, "/templates/"+id, http.StatusSeeOther)
+}
+
+func (s *Server) templateDelete(w http.ResponseWriter, r *http.Request) {
+	id := r.PathValue("id")
+	if err := s.cat.Delete(id); err != nil {
+		http.Error(w, err.Error(), 400)
+		return
+	}
+	http.Redirect(w, r, "/templates", http.StatusSeeOther)
+}
+
+func (s *Server) colorsPage(w http.ResponseWriter, r *http.Request) {
+	s.render(w, "colors.html", pageData{
+		Title:         "Aderfarben",
+		ColorPalettes: s.colors.ListPalettes(),
+	})
 }
 
 func newID() string {

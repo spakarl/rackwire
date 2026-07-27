@@ -1,0 +1,20 @@
+{{define "map_column"}}
+<section class="map-col" style="left: {{.X}}px; top: {{.Y}}px; width: {{.Width}}px; height: {{.Height}}px; --dev: {{.Color}};" data-device-id="{{.DeviceID}}">
+  <header class="map-col-head">
+    <a href="/devices/{{.DeviceID}}">{{.Name}}</a>
+    <span class="kind">{{kindLabel .Kind}}</span>
+  </header>
+  <div class="map-ports">
+    {{range .Ports}}
+    <a class="map-port{{if .Linked}} is-linked{{end}}"
+       href="/devices/{{$.DeviceID}}/ports/{{.ID}}"
+       style="top: {{printf "%.0f" .RelTop}}px;"
+       data-port-key="{{.Key}}"
+       title="{{if .PeerLabel}}{{.PeerLabel}}{{else}}nicht verbunden{{end}}">
+      <span class="map-port-label">{{.Label}}</span>
+      {{if .PeerLabel}}<span class="map-port-peer">↔</span>{{end}}
+    </a>
+    {{end}}
+  </div>
+</section>
+{{end}}

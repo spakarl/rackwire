@@ -1,0 +1,68 @@
+{{define "template_edit.html"}}
+{{template "top" .}}
+
+<p class="crumb"><a href="/templates">Templates</a> / {{.Template.Name}}</p>
+
+<section class="hero row">
+  <div>
+    <h1>{{.Template.Name}}</h1>
+    <p class="muted"><code>{{.Template.ID}}.json</code>{{if .IsSeed}} · Built-in (editierbar, aber nicht löschbar){{end}}</p>
+  </div>
+  {{if not .IsSeed}}
+  <form method="post" action="/templates/{{.Template.ID}}/delete" onsubmit="return confirm('Template löschen?')">
+    <button type="submit" class="danger">Löschen</button>
+  </form>
+  {{end}}
+</section>
+
+<section class="panel">
+  <form method="post" action="/templates/{{.Template.ID}}" class="stack">
+    <input type="hidden" name="pinCount" value="{{len .Template.Pins}}">
+    <label>Anzeigename <input name="name" value="{{.Template.Name}}" required></label>
+
+    <h2>Pins</h2>
+    <table class="pins">
+      <thead>
+        <tr><th>Pinnr.</th><th></th><th>Aderfarbe</th><th>Signal</th><th></th></tr>
+      </thead>
+      <tbody>
+        {{range $i, $p := .Template.Pins}}
+        {{$sw := wireSwatch $p.Color}}
+        <tr>
+          <td><input class="pin-num" type="number" name="pin_{{$i}}_number" value="{{$p.Number}}" min="0" max="99"></td>
+          <td>{{template "wire_swatch" $sw}}</td>
+          <td>
+            <select name="pin_{{$i}}_color">
+              <option value="">—</option>
+              {{range $.ColorGroups}}
+              <optgroup label="{{.Name}}">
+                {{range .Options}}
+                <option value="{{.ID}}" {{if eq .ID $p.Color}}selected{{end}}>{{.Label}}</option>
+                {{end}}
+              </optgroup>
+              {{end}}
+              {{if and $p.Color (not (colorKnown $p.Color))}}
+              <option value="{{$p.Color}}" selected>{{$p.Color}} (unbekannt)</option>
+              {{end}}
+            </select>
+          </td>
+          <td><input name="pin_{{$i}}_signal" value="{{$p.Signal}}"></td>
+          <td>
+            <button type="submit" name="intent" value="remove_pin_{{$i}}" class="danger ghost">✕</button>
+          </td>
+        </tr>
+        {{else}}
+        <tr><td colspan="5" class="muted">Keine Pins</td></tr>
+        {{end}}
+      </tbody>
+    </table>
+
+    <div class="row-actions">
+      <button type="submit" name="intent" value="add_pin">Pin hinzufügen</button>
+      <button type="submit" name="intent" value="save">Speichern</button>
+    </div>
+  </form>
+</section>
+
+{{template "bottom" .}}
+{{end}}

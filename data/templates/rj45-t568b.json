@@ -1,0 +1,54 @@
+{
+  "id": "rj45-t568b",
+  "name": "Netzwerk T568B",
+  "pins": [
+    {
+      "number": 1,
+      "signal": "TX+",
+      "color": "WH/OR",
+      "colorHex": "#f5f0e6"
+    },
+    {
+      "number": 2,
+      "signal": "TX-",
+      "color": "OR",
+      "colorHex": "#e67e22"
+    },
+    {
+      "number": 3,
+      "signal": "RX+",
+      "color": "WH/GN",
+      "colorHex": "#eafaf1"
+    },
+    {
+      "number": 4,
+      "signal": "",
+      "color": "BU",
+      "colorHex": "#3498db"
+    },
+    {
+      "number": 5,
+      "signal": "",
+      "color": "WH/BU",
+      "colorHex": "#ebf5fb"
+    },
+    {
+      "number": 6,
+      "signal": "RX-",
+      "color": "GN",
+      "colorHex": "#27ae60"
+    },
+    {
+      "number": 7,
+      "signal": "",
+      "color": "WH/BN",
+      "colorHex": "#f5e6d3"
+    },
+    {
+      "number": 8,
+      "signal": "",
+      "color": "BN",
+      "colorHex": "#8b4513"
+    }
+  ]
+}

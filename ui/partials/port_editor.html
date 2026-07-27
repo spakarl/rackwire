@@ -7,6 +7,7 @@
         hx-target="#port-editor"
         hx-swap="outerHTML"
         class="stack">
+    <input type="hidden" name="pinCount" value="{{len .Port.Pins}}">
     <div class="form-grid">
       <label>Label <input name="label" value="{{.Port.Label}}" required></label>
       <label>Template
@@ -17,33 +18,55 @@
         </select>
       </label>
     </div>
-    <p class="hint">Template wechseln setzt die Pins auf die Standardbelegung zurück. Einzelne Pins kannst du danach überschreiben.</p>
+    <p class="hint">Template wechseln und Speichern setzt die Pins auf die Template-Belegung. Aderfarben aus der Palette (z.B. WH/OR).</p>
 
     <h2>Pins</h2>
-    {{if .Port.Pins}}
     <table class="pins">
       <thead>
-        <tr><th>#</th><th>Farbe</th><th>Ader</th><th>Signal</th></tr>
+        <tr><th>Pinnr.</th><th></th><th>Aderfarbe</th><th>Signal</th><th></th></tr>
       </thead>
       <tbody>
-        {{range .Port.Pins}}
+        {{range $i, $p := .Port.Pins}}
+        {{$sw := wireSwatch $p.Color}}
         <tr>
-          <td class="num">{{.Number}}</td>
-          <td><span class="swatch" style="background: {{.ColorHex}}" title="{{.ColorHex}}"></span></td>
+          <td><input class="pin-num" type="number" name="pin_{{$i}}_number" value="{{$p.Number}}" min="0" max="99" aria-label="Pinnummer"></td>
+          <td>{{template "wire_swatch" $sw}}</td>
           <td>
-            <input name="pin_{{.Number}}_color" value="{{.Color}}" aria-label="Aderfarbe Pin {{.Number}}">
-            <input type="color" name="pin_{{.Number}}_hex" value="{{if .ColorHex}}{{.ColorHex}}{{else}}#888888{{end}}" aria-label="Farbcode Pin {{.Number}}">
+            <select name="pin_{{$i}}_color" aria-label="Aderfarbe">
+              <option value="">—</option>
+              {{range $.ColorGroups}}
+              <optgroup label="{{.Name}}">
+                {{range .Options}}
+                <option value="{{.ID}}" {{if eq .ID $p.Color}}selected{{end}}>{{.Label}}</option>
+                {{end}}
+              </optgroup>
+              {{end}}
+              {{if and $p.Color (not (colorKnown $p.Color))}}
+              <option value="{{$p.Color}}" selected>{{$p.Color}} (unbekannt)</option>
+              {{end}}
+            </select>
           </td>
-          <td><input name="pin_{{.Number}}_signal" value="{{.Signal}}" aria-label="Signal Pin {{.Number}}"></td>
+          <td><input name="pin_{{$i}}_signal" value="{{$p.Signal}}" aria-label="Signal"></td>
+          <td>
+            <button type="submit" name="intent" value="remove_pin_{{$i}}" class="danger ghost">✕</button>
+          </td>
         </tr>
+        {{else}}
+        <tr><td colspan="5" class="muted">Keine Pins</td></tr>
         {{end}}
       </tbody>
     </table>
-    {{else}}
-    <p class="muted">Keine Pins (Blank-Template).</p>
-    {{end}}
 
-    <button type="submit">Speichern</button>
+    <div class="row-actions">
+      <button type="submit" name="intent" value="add_pin">Pin hinzufügen</button>
+      <button type="submit" name="intent" value="save">Speichern</button>
+    </div>
+
+    <h3>Als Template speichern</h3>
+    <div class="form-grid">
+      <label>Template-Name <input name="templateName" placeholder="z.B. Wohnzimmer Sonderdose"></label>
+      <button type="submit" name="intent" value="save_template">Template anlegen</button>
+    </div>
   </form>
 </section>
 {{end}}

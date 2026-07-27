@@ -1,5 +1,10 @@
 package model
 
+import (
+	"sort"
+	"strings"
+)
+
 // Pin is one physical contact on a port.
 type Pin struct {
 	Number   int    `json:"number"`
@@ -25,11 +30,12 @@ type Port struct {
 
 // Device is a patch panel, router, wall outlet, etc.
 type Device struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Kind  string `json:"kind"` // patchpanel | router | outlet | other
-	Color string `json:"color"`
-	Ports []Port `json:"ports"`
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Kind     string `json:"kind"` // patchpanel | router | outlet | other
+	Color    string `json:"color"`
+	Position int    `json:"position"` // rack unit / sort index; smaller = earlier
+	Ports    []Port `json:"ports"`
 }
 
 // Endpoint identifies one side of a patch link.
@@ -59,6 +65,23 @@ func (r *Rack) DeviceByID(id string) *Device {
 		}
 	}
 	return nil
+}
+
+// DevicesSorted returns devices ordered by Position, then Name.
+func (r *Rack) DevicesSorted() []Device {
+	return SortDevices(r.Devices)
+}
+
+// SortDevices returns a copy of devices ordered by Position, then Name.
+func SortDevices(devices []Device) []Device {
+	out := append([]Device(nil), devices...)
+	sort.SliceStable(out, func(i, j int) bool {
+		if out[i].Position != out[j].Position {
+			return out[i].Position < out[j].Position
+		}
+		return strings.ToLower(out[i].Name) < strings.ToLower(out[j].Name)
+	})
+	return out
 }
 
 func (d *Device) PortByID(id string) *Port {

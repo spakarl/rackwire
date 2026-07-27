@@ -1,0 +1,43 @@
+{{define "templates.html"}}
+{{template "top" .}}
+
+<section class="hero">
+  <h1>Port-Templates</h1>
+  <p class="lede">Benannte Pinbelegungen als JSON unter <code>data/templates/</code>. Standard für neue Ports: <strong>{{.DefaultID}}</strong>.</p>
+</section>
+
+<section class="panel">
+  <h2>Vorhanden</h2>
+  <table class="pins">
+    <thead><tr><th>Name</th><th>ID</th><th>Pins</th><th></th></tr></thead>
+    <tbody>
+      {{range .Templates}}
+      <tr>
+        <td><a href="/templates/{{.ID}}">{{.Name}}</a></td>
+        <td><code>{{.ID}}</code></td>
+        <td>{{len .Pins}}</td>
+        <td><a href="/templates/{{.ID}}">Bearbeiten</a></td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>Neues Template</h2>
+  <form method="post" action="/templates" class="form-grid">
+    <label>Name <input name="name" required placeholder="z.B. ISDN Wohnzimmer"></label>
+    <label>Kopieren von
+      <select name="fromId">
+        <option value="">— leer —</option>
+        {{range .Templates}}
+        <option value="{{.ID}}" {{if eq .ID $.DefaultID}}selected{{end}}>{{.Name}}</option>
+        {{end}}
+      </select>
+    </label>
+    <button type="submit">Anlegen</button>
+  </form>
+</section>
+
+{{template "bottom" .}}
+{{end}}

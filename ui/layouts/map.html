@@ -1,0 +1,44 @@
+{{define "map.html"}}
+{{template "top" .}}
+
+<section class="hero">
+  <h1>Verbindungskarte</h1>
+  <p class="lede">Patchkabel zwischen Rack (links) und Feldgeräten (rechts). Hover hebt Port und Leitung hervor.</p>
+</section>
+
+{{if not .Map.Left}}{{if not .Map.Right}}
+<p class="muted">Noch keine Geräte vorhanden.</p>
+{{end}}{{end}}
+
+<div class="map-wrap" id="patch-map">
+  <div class="map-stage" style="width: {{.Map.Width}}px; height: {{.Map.Height}}px;">
+    <svg class="map-svg" width="{{.Map.Width}}" height="{{.Map.Height}}" viewBox="0 0 {{.Map.Width}} {{.Map.Height}}" aria-hidden="true">
+      {{range .Map.Curves}}
+      <path class="map-curve"
+            d="{{.Path}}"
+            stroke="{{.Color}}"
+            data-link-id="{{.LinkID}}"
+            data-from="{{.FromKey}}"
+            data-to="{{.ToKey}}"
+            data-link-ends="{{.FromKey}} {{.ToKey}}">
+        <title>{{.Title}}</title>
+      </path>
+      {{end}}
+    </svg>
+
+    {{range .Map.Left}}
+    {{template "map_column" .}}
+    {{end}}
+    {{range .Map.Right}}
+    {{template "map_column" .}}
+    {{end}}
+  </div>
+</div>
+
+{{if not .Map.HasLinks}}
+<p class="muted map-empty-hint">Noch keine Verbindungen — auf der <a href="/">Startseite</a> kannst du Ports verlinken.</p>
+{{end}}
+
+<script src="/static/app.js"></script>
+{{template "bottom" .}}
+{{end}}
