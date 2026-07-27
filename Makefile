@@ -1,11 +1,7 @@
 IMAGE   ?= ghcr.io/spakarl/rackwire
 TAG     ?= latest
 PORT    ?= 3040
-
-DOCKER ?= $(shell if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then echo docker; \
-	elif command -v docker.exe >/dev/null 2>&1; then echo docker.exe; \
-	else echo docker; fi)
-COMPOSE ?= $(DOCKER) compose
+COMPOSE ?= docker compose
 
 .PHONY: help build run up down restart logs push publish login clean tidy
 
@@ -36,18 +32,18 @@ logs: ## Follow logs
 
 login: ## Login to GHCR
 	@if [ -n "$$GH_TOKEN" ]; then \
-		echo "$$GH_TOKEN" | $(DOCKER) login ghcr.io -u spakarl --password-stdin; \
+		echo "$$GH_TOKEN" | docker login ghcr.io -u spakarl --password-stdin; \
 	else \
-		gh auth token | $(DOCKER) login ghcr.io -u spakarl --password-stdin; \
+		gh auth token | docker login ghcr.io -u spakarl --password-stdin; \
 	fi
 
 push: ## Build image and push to GHCR
-	$(DOCKER) build -t $(IMAGE):$(TAG) .
-	$(DOCKER) push $(IMAGE):$(TAG)
+	docker build -t $(IMAGE):$(TAG) .
+	docker push $(IMAGE):$(TAG)
 
 publish: login push ## Login + push
 
 clean: ## Remove containers/volumes/image
 	$(COMPOSE) down --rmi local --volumes --remove-orphans || true
-	$(DOCKER) rmi $(IMAGE):$(TAG) 2>/dev/null || true
+	docker rmi $(IMAGE):$(TAG) 2>/dev/null || true
 	rm -rf bin
