@@ -1,11 +1,41 @@
 (function () {
+  function applyColorSwatch(select) {
+    const row = select.closest("tr");
+    if (!row) return;
+    const swatch = row.querySelector(".swatch");
+    if (!swatch) return;
+    const opt = select.selectedOptions[0];
+    if (!opt) return;
+    const solid = !opt.value || opt.dataset.solid !== "false";
+    if (solid) {
+      swatch.className = "swatch swatch-solid";
+      swatch.style.background = opt.dataset.hex || "#888888";
+      swatch.style.removeProperty("--base");
+      swatch.style.removeProperty("--stripe");
+    } else {
+      swatch.className = "swatch swatch-stripe";
+      swatch.style.background = "";
+      swatch.style.setProperty("--base", opt.dataset.base || "#f5f5f5");
+      swatch.style.setProperty("--stripe", opt.dataset.stripe || "#888888");
+    }
+    const title = opt.value ? opt.value + " " + (opt.textContent || "").trim() : "";
+    if (title) swatch.title = title;
+  }
+
+  document.addEventListener("change", (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLSelectElement)) return;
+    if (!el.name || el.name.indexOf("_color") === -1) return;
+    applyColorSwatch(el);
+  });
+
   const mapEl = document.getElementById("port-map");
   if (mapEl) {
     let map = {};
     try {
       map = JSON.parse(mapEl.textContent);
-    } catch (e) {
-      console.error("port-map parse failed", e);
+    } catch (err) {
+      console.error("port-map parse failed", err);
     }
 
     function fillPorts(deviceSelect, portSelect) {

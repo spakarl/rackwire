@@ -33,16 +33,18 @@
           <td>{{template "wire_swatch" $sw}}</td>
           <td>
             <select name="pin_{{$i}}_color">
-              <option value="">—</option>
+              <option value="" data-solid="true" data-hex="#888888">—</option>
               {{range $.ColorGroups}}
               <optgroup label="{{.Name}}">
                 {{range .Options}}
-                <option value="{{.ID}}" {{if eq .ID $p.Color}}selected{{end}}>{{.Label}}</option>
+                <option value="{{.ID}}"
+                  {{if .Resolved.Solid}}data-solid="true" data-hex="{{.Resolved.Hex}}"{{else}}data-solid="false" data-base="{{.Resolved.BaseHex}}" data-stripe="{{.Resolved.StripeHex}}"{{end}}
+                  {{if eq .ID $p.Color}}selected{{end}}>{{.Label}}</option>
                 {{end}}
               </optgroup>
               {{end}}
               {{if and $p.Color (not (colorKnown $p.Color))}}
-              <option value="{{$p.Color}}" selected>{{$p.Color}} (unbekannt)</option>
+              <option value="{{$p.Color}}" selected data-solid="true" data-hex="#888888">{{$p.Color}} (unbekannt)</option>
               {{end}}
             </select>
           </td>

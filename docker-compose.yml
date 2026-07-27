@@ -6,8 +6,6 @@ services:
     ports:
       - "${RACKWIRE_PORT:-3040}:3040"
     volumes:
-      - rackwire-data:/app/data
+      # Same tree as `make run` (DATA_PATH=data/rack.json, templates, colors)
+      - ./data:/app/data
     restart: unless-stopped
-
-volumes:
-  rackwire-data:

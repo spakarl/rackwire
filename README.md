@@ -6,7 +6,7 @@ Dokumentiere dein Rack: Patchpanels, Router und Dosen — inkl. **Port-Labels**,
 
 - Go (`net/http` + `html/template`)
 - HTMX für Partial-Updates am Port-Editor
-- JSON-Persistenz (`data/rack.json`)
+- JSON-Persistenz (`data/rack.json`) — Docker bind-mountet `./data` (gleicher Speicher wie `make run`)
 - Docker / Compose / Makefile
 
 ## Quick start
@@ -21,6 +21,8 @@ Lokal ohne Docker:
 ```bash
 make run
 ```
+
+Nicht beides gleichzeitig starten: Container und `make run` teilen sich `data/` und würden konkurrierend schreiben.
 
 ## Features (MVP)
 

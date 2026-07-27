@@ -43,7 +43,7 @@ push: ## Build image and push to GHCR
 
 publish: login push ## Login + push
 
-clean: ## Remove containers/volumes/image
-	$(COMPOSE) down --rmi local --volumes --remove-orphans || true
+clean: ## Remove containers/image (project ./data is kept)
+	$(COMPOSE) down --rmi local --remove-orphans || true
 	docker rmi $(IMAGE):$(TAG) 2>/dev/null || true
 	rm -rf bin

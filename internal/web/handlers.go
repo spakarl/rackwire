@@ -60,6 +60,7 @@ func (s *Server) Handler() http.Handler {
 	mux.HandleFunc("POST /devices/{id}", s.updateDevice)
 	mux.HandleFunc("POST /devices/{id}/delete", s.deleteDevice)
 	mux.HandleFunc("GET /devices/{id}/ports/{portId}", s.port)
+	mux.HandleFunc("GET /devices/{id}/ports/{portId}/preview", s.previewPort)
 	mux.HandleFunc("POST /devices/{id}/ports/{portId}", s.updatePort)
 	mux.HandleFunc("POST /devices/{id}/ports", s.addPorts)
 
@@ -295,6 +296,43 @@ func (s *Server) port(w http.ResponseWriter, r *http.Request) {
 	}))
 }
 
+// previewPort applies a template in-memory for the editor UI without persisting.
+func (s *Server) previewPort(w http.ResponseWriter, r *http.Request) {
+	devID := r.PathValue("id")
+	portID := r.PathValue("portId")
+	_ = r.ParseForm()
+	tplID := strings.TrimSpace(r.FormValue("templateId"))
+
+	rack := s.store.Get()
+	dev := rack.DeviceByID(devID)
+	if dev == nil {
+		http.NotFound(w, r)
+		return
+	}
+	port := dev.PortByID(portID)
+	if port == nil {
+		http.NotFound(w, r)
+		return
+	}
+
+	preview := *port
+	if label := strings.TrimSpace(r.FormValue("label")); label != "" {
+		preview.Label = label
+	}
+	if tplID != "" {
+		s.cat.ApplyTemplate(&preview, tplID)
+	}
+
+	s.render(w, "port_editor.html", s.withColors(pageData{
+		Rack:      &rack,
+		Device:    dev,
+		Port:      &preview,
+		Templates: s.cat.List(),
+		Peer:      rack.PeerLabel(devID, portID),
+		Flash:     "Vorschau — noch nicht gespeichert",
+	}))
+}
+
 func (s *Server) updatePort(w http.ResponseWriter, r *http.Request) {
 	devID := r.PathValue("id")
 	portID := r.PathValue("portId")
@@ -381,13 +419,9 @@ func (s *Server) updatePort(w http.ResponseWriter, r *http.Request) {
 			port.TemplateID = t.ID
 			flash = "Template gespeichert"
 		default: // save
-			if newTpl != "" && newTpl != port.TemplateID {
-				s.cat.ApplyTemplate(port, newTpl)
-			} else {
-				port.Pins = s.parsePinsFromForm(r)
-				if newTpl != "" {
-					port.TemplateID = newTpl
-				}
+			port.Pins = s.parsePinsFromForm(r)
+			if newTpl != "" {
+				port.TemplateID = newTpl
 			}
 			flash = "Gespeichert"
 		}
