@@ -110,13 +110,7 @@
   </form>
 </section>
 
-<script type="application/json" id="port-map">
-{
-{{range $i, $d := .Rack.DevicesSorted}}{{if $i}},{{end}}
-"{{$d.ID}}": [{{range $j, $p := $d.Ports}}{{if $j}},{{end}}{"id":"{{$p.ID}}","label":{{printf "%q" $p.Label}}}{{end}}]
-{{end}}
-}
-</script>
+<script type="application/json" id="port-map">{{.PortMapJSON}}</script>
 
 {{template "bottom" .}}
 {{end}}

@@ -3,6 +3,7 @@ package web
 import (
 	"crypto/rand"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/fs"
@@ -104,6 +105,7 @@ type pageData struct {
 	IsSeed        bool
 	DefaultID     string
 	PortPrefix    string
+	PortMapJSON   template.JS
 }
 
 func (s *Server) withColors(d pageData) pageData {
@@ -122,8 +124,32 @@ func (s *Server) render(w http.ResponseWriter, name string, data any) {
 func (s *Server) home(w http.ResponseWriter, r *http.Request) {
 	rack := s.store.Get()
 	s.render(w, "home.html", pageData{
-		Title: rack.Name, Rack: &rack, Templates: s.cat.List(), DefaultID: porttpl.DefaultID,
+		Title:       rack.Name,
+		Rack:        &rack,
+		Templates:   s.cat.List(),
+		DefaultID:   porttpl.DefaultID,
+		PortMapJSON: portMapJSON(&rack),
 	})
+}
+
+func portMapJSON(rack *model.Rack) template.JS {
+	type portEntry struct {
+		ID    string `json:"id"`
+		Label string `json:"label"`
+	}
+	m := map[string][]portEntry{}
+	for _, d := range rack.Devices {
+		ports := make([]portEntry, 0, len(d.Ports))
+		for _, p := range d.Ports {
+			ports = append(ports, portEntry{ID: p.ID, Label: p.Label})
+		}
+		m[d.ID] = ports
+	}
+	b, err := json.Marshal(m)
+	if err != nil {
+		return template.JS("{}")
+	}
+	return template.JS(b)
 }
 
 func (s *Server) mapPage(w http.ResponseWriter, r *http.Request) {
