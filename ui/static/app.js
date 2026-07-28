@@ -1,9 +1,10 @@
 (function () {
   const FOLD_KEY = "rackwire.home.folds";
+  const foldEls = document.querySelectorAll("details.fold[data-fold]");
 
   function persistFolds() {
     const state = {};
-    document.querySelectorAll("details.fold[data-fold]").forEach((el) => {
+    foldEls.forEach((el) => {
       state[el.getAttribute("data-fold")] = el.open;
     });
     try {
@@ -17,7 +18,7 @@
       state = JSON.parse(localStorage.getItem(FOLD_KEY) || "null");
     } catch (_) {}
     if (!state || typeof state !== "object") return;
-    document.querySelectorAll("details.fold[data-fold]").forEach((el) => {
+    foldEls.forEach((el) => {
       const id = el.getAttribute("data-fold");
       if (Object.prototype.hasOwnProperty.call(state, id)) {
         el.open = !!state[id];
@@ -25,14 +26,19 @@
     });
   }
 
-  restoreFolds();
-  document.querySelectorAll("details.fold[data-fold]").forEach((el) => {
-    el.addEventListener("toggle", persistFolds);
-  });
-  // Keep open panels across POST redirects (e.g. new link).
-  document.querySelectorAll("details.fold[data-fold] form").forEach((form) => {
-    form.addEventListener("submit", persistFolds);
-  });
+  if (foldEls.length) {
+    restoreFolds();
+    foldEls.forEach((el) => el.addEventListener("toggle", persistFolds));
+    // Keep open panels across POST redirects on the home page (e.g. new link).
+    document.querySelectorAll("details.fold[data-fold] form").forEach((form) => {
+      form.addEventListener("submit", persistFolds);
+    });
+  } else {
+    // Left the home page — next visit uses default open/closed panels.
+    try {
+      localStorage.removeItem(FOLD_KEY);
+    } catch (_) {}
+  }
 
   function applyColorSwatch(select) {
     const row = select.closest("tr");
